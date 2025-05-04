@@ -1,3 +1,9 @@
+# File that contains saved housing list
+viewed.txt
+
+# File for local testing of different program functions
+test.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
