@@ -43,7 +43,7 @@ def main_loop():
     viewed_file.write("\n")
 
     if not isInit:
-      print_element(el)
+      register_element(el)
   
   isInit = False
   timer = threading.Timer(QUERY_PERIOD, main_loop)
