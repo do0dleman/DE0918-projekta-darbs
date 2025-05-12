@@ -1,6 +1,9 @@
 # File that contains saved housing list
 viewed.txt
 
+# Settings file that could be unique for each device
+settings.json
+
 # File for local testing of different program functions
 test.py
 

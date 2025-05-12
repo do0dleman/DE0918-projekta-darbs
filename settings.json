@@ -1,5 +1,1 @@
-{
-  "max_price_value": 550,
-  "is_district_whitelist": false,
-  "district_whitelist": []
-}
+{"max_price_value": 550, "is_district_whitelist": false, "district_whitelist": []}
