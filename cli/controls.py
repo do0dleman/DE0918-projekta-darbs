@@ -9,6 +9,11 @@ def handle_user_input(user_input: str):
       print("q: exit the program\n" \
       "get_max_price: get current max price for housing\n" \
       "set_max_price <int>: set max price four housing\n"
+      "get_whitelist_districts: get districts added to user whitelist\n"
+      "get_all_districts: get all available district names\n" 
+      "toggle_whitelist: turn whitelist on or off\n" 
+      "add_district <string>: add district to whitelist using district name\n" 
+      "rm_district <string>: remove district from whitelist using district name\n" 
       )
     case "set_max_price":
       settings["max_price_value"] = int(args[0])
