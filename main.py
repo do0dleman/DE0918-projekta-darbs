@@ -2,11 +2,11 @@ import threading
 from urllib.request import urlopen
 import re
 
+from cli.controls import handle_user_input
+from globals import QUERY_PERIOD, URL
+from cli.helpers import is_passing_user_filter, register_element
 from parser.html import HtmlTree
 from webscraping.utils import *
-
-URL = "https://www.ss.com/lv/real-estate/flats/riga/all/hand_over/"
-QUERY_PERIOD = 60
 
 viewed_file = open("viewed.txt", "a+")
 viewed_list = []
@@ -42,19 +42,29 @@ def main_loop():
     viewed_file.write(el_id)
     viewed_file.write("\n")
 
-    if not isInit:
+    if not isInit and is_passing_user_filter(el):
       register_element(el)
   
   isInit = False
   timer = threading.Timer(QUERY_PERIOD, main_loop)
   timer.start()
 
+# loop that checks website for new housing
 main_loop()
 
+# loop for handling cli commands
+isFirstInput = True
 while True:
-  user_input = input("\n(Enter q to exit) ")
+  input_msg = ""
+  if isFirstInput:
+    input_msg = "\n(Enter q to exit, help for more) "
+  
+  user_input = input(input_msg)
+  isFirstInput = False
 
   if user_input == "q":
     timer.cancel()
     viewed_file.close()
     exit(0)
+  else:
+    handle_user_input(user_input)

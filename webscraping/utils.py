@@ -1,4 +1,3 @@
-from notifypy import Notify
 
 # This functions accept as an input <tr id="tr_****"> element 
 # That is a row in the table of available accomodations
@@ -34,24 +33,3 @@ def get_link(el: Element):
 
 def get_id(el: Element):
     return el.children[1].children[0].attrs.get("href").split("/")[-1].split(".")[0]
-
-def register_element(el: Element):
-    description = get_description(el)
-    location = get_location(el)
-    price = get_price(el)
-    link = get_link(el)
-
-    print("\n-----------------------------New Housing------------------------------", flush=True)
-    print(description, flush=True)
-
-    delimeter = ""
-    length = 70 - len(location) - len(price)
-    delimeter = delimeter.ljust(length)
-    print(location + delimeter + price, flush=True)
-    print(link, flush=True)
-
-    notification = Notify()
-    notification.application_name = "Housing Alert"
-    notification.title = "New Housing: " + price
-    notification.message = description
-    notification.send()
