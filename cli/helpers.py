@@ -4,7 +4,7 @@ from globals import settings
 
 def is_passing_user_filter(el: Element):
     price = get_price(el)
-    price_numeric = int(price.split(" ")[0])
+    price_numeric = int(price.split(" ")[0].replace(",", ""))
     
     if price_numeric > settings["max_price_value"]:
         return False
