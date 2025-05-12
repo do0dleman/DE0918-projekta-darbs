@@ -23,6 +23,7 @@ def handle_user_input(user_input: str):
         print(ALL_DISTRICT_NAMES[district_index])
     case "toggle_whitelist":
       settings["is_district_whitelist"] = not settings["is_district_whitelist"]
+      write_settings()
       if settings["is_district_whitelist"]:
         print("District whitelist is turned on")
       else:

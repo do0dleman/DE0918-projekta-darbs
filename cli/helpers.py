@@ -1,6 +1,6 @@
 from notifypy import Notify
 from webscraping.utils import *
-from globals import settings
+from globals import ALL_DISTRICT_LINK_NAMES, settings
 
 def is_passing_user_filter(el: Element):
     price = get_price(el)
@@ -8,6 +8,13 @@ def is_passing_user_filter(el: Element):
     
     if price_numeric > settings["max_price_value"]:
         return False
+    
+    district = get_district(el)
+    district_index = ALL_DISTRICT_LINK_NAMES.index(district)
+
+    if district_index not in settings["district_whitelist"] and settings["is_district_whitelist"]:
+        return False
+
     return True
 
 def register_element(el: Element):

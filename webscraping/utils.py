@@ -31,5 +31,8 @@ def get_price(el: Element):
 def get_link(el: Element):
     return "https://www.ss.com" + el.children[1].children[0].attrs.get("href")
 
+def get_district(el: Element):
+    return el.children[1].children[0].attrs.get("href").split("/")[-2]
+
 def get_id(el: Element):
     return el.children[1].children[0].attrs.get("href").split("/")[-1].split(".")[0]
